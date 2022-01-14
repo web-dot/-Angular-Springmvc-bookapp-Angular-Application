@@ -11,6 +11,7 @@ import { BookService } from './book.service';
 export class BookComponent implements OnInit{
 
     books: Book[];
+    book = new Book();
     constructor(private _bookService: BookService){}
 
     ngOnInit(): void {
@@ -25,5 +26,13 @@ export class BookComponent implements OnInit{
                 console.log(error);
             })
     }
+
+    addBook(): void{
+        this._bookService.addBook(this.book)
+        .subscribe((response) => {console.log(response)}, (error) => {
+            console.log(error);
+        });        
+    }
+
 
 }
