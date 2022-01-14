@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BookComponent } from '../book/book.component';
 import { BookService } from 'src/book/book.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [BookService],
   bootstrap: [AppComponent]

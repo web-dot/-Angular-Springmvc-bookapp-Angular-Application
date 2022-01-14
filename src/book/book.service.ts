@@ -1,10 +1,7 @@
-import {HttpClient, HttpResponse, HttpRequest, HttpParams, HttpHeaders} from '@angular/common/http';
-import { RequestOptions } from 'https';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Book } from './book';
-import { map } from 'rxjs/operators';
-import { catchError } from 'rxjs/operators';
 
 
 @Injectable()
@@ -33,6 +30,10 @@ export class BookService{
         let body = JSON.stringify(book);
         let headers = new Headers({'Content-Type': 'application/json'});
         return this._httpService.post("http://localhost:8080/bookapi/api/book", body, options);        
+    }
+
+    deleteBook(bookId: string){
+        return this._httpService.delete('http://localhost:8080/bookapi/api/book/' + bookId);
     }
 
 

@@ -1,6 +1,16 @@
 <h1>Welcome to BookAPI</h1>
 
 <div>
+    <form>
+        Enter Title: <input type="text" [(ngModel)] = "book.title" name="title" ><br>
+        Enter Author: <input type="text" [(ngModel)] = "book.author" name="author" ><br>
+        <button (click)="addBook()">Add Book</button>
+    </form>
+</div>
+
+
+
+<div>
     <table border="1">
         <tr>
             <th>ID</th>
@@ -12,7 +22,7 @@
             <td>{{book.id}}</td>
             <td>{{book.title}}</td>
             <td>{{book.author}}</td>
-            <td>Edit | Delete</td>
+            <td>Edit | <button (click)="deleteBook(book.id)">Delete</button></td>
         </tr>
     </table>
 </div>

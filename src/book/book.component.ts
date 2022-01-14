@@ -3,6 +3,7 @@ import {Book} from './book';
 import { BookService } from './book.service';
 
 
+
 @Component({
     selector: 'app-book',
     templateUrl: './book.component.html',
@@ -31,8 +32,19 @@ export class BookComponent implements OnInit{
         this._bookService.addBook(this.book)
         .subscribe((response) => {console.log(response)}, (error) => {
             console.log(error);
+            this.reset();
+            this.getBooks();
         });        
     }
 
+    private reset(){
+        this.book.id=null;
+        this.book.author=null;
+        this.book.title=null;
+    }
+
+    deleteBook(bookId: string){
+        this._bookService.deleteBook(bookId).subscribe((response) => {console.log(response); this.getBooks()});
+    }
 
 }
